@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-03-24T06:41:11.895Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>haha</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu刚安装好后要干什么</title>
+    <link href="http://yoursite.com/2018/03/20/Linux/"/>
+    <id>http://yoursite.com/2018/03/20/Linux/</id>
+    <published>2018-03-20T11:22:00.000Z</published>
+    <updated>2018-03-24T06:41:11.895Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="从Ubuntu安装到用idea写第一个HelloWorld"><a href="#从Ubuntu安装到用idea写第一个HelloWorld" class="headerlink" title="从Ubuntu安装到用idea写第一个HelloWorld"></a>从Ubuntu安装到用idea写第一个HelloWorld</h1><h2 id="卸载预装的软件"><a href="#卸载预装的软件" class="headerlink" title="卸载预装的软件"></a>卸载预装的软件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove libreoffice-common</span><br><span class="line">sudo apt-get remove unity-webapps-common</span><br><span class="line">sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku landscape-client-ui-install</span><br><span class="line">sudo apt-get remove onboard deja-dup</span><br></pre></td></tr></table></figure><h2 id="自动清理"><a href="#自动清理" class="headerlink" title="自动清理"></a>自动清理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure><h2 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h2><p>更新资源列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p><p>更新软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure></p><h2 id="下载java"><a href="#下载java" class="headerlink" title="下载java"></a>下载java</h2><p><em>(这里我用的是手动下载，去oracle官网下对应的linux版本就好了,我下的是tar.gz的压缩包)</em><br>下载完成后将移动到usr的lib下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv fileName /usr/lib</span><br></pre></td></tr></table></figure></p><p>解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf 文件名</span><br></pre></td></tr></table></figure></p><p>配置环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/profile</span><br></pre></td></tr></table></figure></p><p>在最后面加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jdk1.8.0_161</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib</span><br></pre></td></tr></table></figure></p><p>你需要把JAVA_HOME换成你自己的文件夹名<br>我没用VIM和VI，因为我更喜欢gedit的操作方式</p><p>更新一下源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo source /etc/profile</span><br></pre></td></tr></table></figure></p><p>查看是否成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></p><h2 id="安装idea"><a href="#安装idea" class="headerlink" title="安装idea"></a>安装idea</h2><p>官网下载对应版本，移动到/opt下然后解压就可以了<br>进入解压后里边的bin文件夹，执行一下idea.sh就好了<br>根据自己的路径修改下边命令就行了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mv fileName /opt</span><br><span class="line">sudo tar -zxvf fileName</span><br><span class="line">cd /opt/idea/bin</span><br><span class="line">sudo ./idea.sh</span><br></pre></td></tr></table></figure></p><p>创建快捷方式 在/usr/share/applications<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit ./文件名.desktop</span><br><span class="line"></span><br><span class="line">[Desktop Entry]</span><br><span class="line">Name=IntelliJ IDEA</span><br><span class="line">Exec=/opt/ideaIU/bin/idea.sh</span><br><span class="line">Comment=IntelliJ IDEA</span><br><span class="line">Icon=/opt/ideaIU/bin/idea.png</span><br><span class="line">Type=Application</span><br><span class="line">Terminal=false</span><br><span class="line">Encoding=UTF-8</span><br></pre></td></tr></table></figure></p><h2 id="安装chrome浏览器"><a href="#安装chrome浏览器" class="headerlink" title="安装chrome浏览器"></a>安装chrome浏览器</h2><p>添加下载源，使用linux公社的源，如果地址无法解析用其他源替换地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</span><br></pre></td></tr></table></figure></p><p>导入谷歌公钥，用来对下载软件做验证(我觉得应该是可以省略，没尝试)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</span><br></pre></td></tr></table></figure></p><p>更新资源列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p><p>安装chrome<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install google-chrome-stable</span><br></pre></td></tr></table></figure></p><h2 id="安装sublime-text-3"><a href="#安装sublime-text-3" class="headerlink" title="安装sublime text 3"></a>安装sublime text 3</h2><p>官方网站有文档，照着执行就行了，推荐用稳定版，不用dev版本</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;从Ubuntu安装到用idea写第一个HelloWorld&quot;&gt;&lt;a href=&quot;#从Ubuntu安装到用idea写第一个HelloWorld&quot; class=&quot;headerlink&quot; title=&quot;从Ubuntu安装到用idea写第一个HelloWorld&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
+    
+      <category term="idea" scheme="http://yoursite.com/tags/idea/"/>
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/03/16/hello-world/"/>
+    <id>http://yoursite.com/2018/03/16/hello-world/</id>
+    <published>2018-03-16T09:34:50.147Z</published>
+    <updated>2018-03-16T09:34:50.147Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何学习新的技术</title>
+    <link href="http://yoursite.com/2018/03/16/howtolearn/"/>
+    <id>http://yoursite.com/2018/03/16/howtolearn/</id>
+    <published>2018-03-16T06:02:00.000Z</published>
+    <updated>2018-03-24T06:37:14.961Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="如何学习一门新的技术"><a href="#如何学习一门新的技术" class="headerlink" title="如何学习一门新的技术"></a>如何学习一门新的技术</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>刚开始认真的学编程不久，因为是在校的一名大学狗，所以之前都是在跟老师的课，老师讲的也比较简单，自己之前也感觉反正还有四年，能混就混。</p><p>大三下学期听说中旬就要实习了，之前一直没啥紧张感，现在回顾发现自己居然只会一些简单的基础。于是决定开始自己赶进度（不是追老师讲的，而是自己学习额外的），发现要学的东西非常多，特别写一篇文章用来记录学习方法。</p><h2 id="1-整体思路"><a href="#1-整体思路" class="headerlink" title="1.整体思路"></a>1.整体思路</h2><p><img src="http://i4.bvimg.com/636689/df7dc3a667215165.png" alt=""><br><em>(图片来源于网络，如有侵权，请联系我删除)</em></p><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>想要学习一个新的语言或者其他东西时，不要直接写代码，先了解一下这个技术到底是什么，其用处以及优劣，他的前身是什么，为什么会出现这个技术，用来针对性的解决的问题是什么</p><h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><p>最最最简单的学习方法是：通过基础教学的视频来进行学习。从搭建环境开始，直到你写出你的第一个<strong>“Hello World”</strong>。然后就是<strong>变量、数组、循环、判断、函数</strong>逐渐深入。</p><p>当你觉得自己学的差不多的时候可以尝试用它写一些比较简单的小程序，来对其语法和特性进行熟悉。</p><p>当对语法和特性熟悉的差不多的时候，可以考虑使用框架来进行一些不算太复杂的程序设计。</p><p>上个阶段结束以后，就可以去<strong>github</strong>或者<strong>码云</strong>上边找一些用你练习过的框架写的实战代码去看看别人是怎么使用这门技术的。</p><p><em>(在我看来，因为是初次接触，看视频绝对是要比看文档学习速度快的，当然前提是你要能找到好的讲解视频)</em></p><h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;如何学习一门新的技术&quot;&gt;&lt;a href=&quot;#如何学习一门新的技术&quot; class=&quot;headerlink&quot; title=&quot;如何学习一门新的技术&quot;&gt;&lt;/a&gt;如何学习一门新的技术&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://yoursite.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="杂谈" scheme="http://yoursite.com/tags/%E6%9D%82%E8%B0%88/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>
